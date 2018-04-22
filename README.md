@@ -1,8 +1,37 @@
 # MNBaseRecyclerViewAdapter
 抽取BaseRecyclerViewAdapter，简化代码，支持添加头尾布局。
 
-## 使用步骤：
-### 代码使用：
+## 如何添加
+### 1:Gradle添加：
+#### 1.在Project的build.gradle中添加仓库地址
+
+``` gradle
+	allprojects {
+		repositories {
+			...
+			maven { url "https://jitpack.io" }
+		}
+	}
+```
+
+#### 2.在app目录下的build.gradle中添加依赖
+``` gradle
+	dependencies {
+	     compile 'com.github.maning0303:MNBaseRecyclerViewAdapter:V1.0.0'
+	}
+```
+
+### 2:源码Module添加：
+#### 直接关联 library-base-adapter
+
+``` gradle
+
+	compile project(':library-base-adapter')
+
+```
+
+
+## 代码使用（详情Demo）：
 #### 1.继承BaseRecyclerViewAdapter
 ``` java
 
