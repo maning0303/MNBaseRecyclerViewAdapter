@@ -1,0 +1,2 @@
+# MNBaseRecyclerViewAdapter
+抽取BaseRecyclerViewAdapter，简化代码，支持添加头尾布局。
