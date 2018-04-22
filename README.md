@@ -1,5 +1,6 @@
 # MNBaseRecyclerViewAdapter
 抽取BaseRecyclerViewAdapter，简化代码，支持添加头尾布局。
+[![](https://jitpack.io/v/maning0303/MNBaseRecyclerViewAdapter.svg)](https://jitpack.io/#maning0303/MNBaseRecyclerViewAdapter)
 
 ## 如何添加
 ### 1:Gradle添加：
