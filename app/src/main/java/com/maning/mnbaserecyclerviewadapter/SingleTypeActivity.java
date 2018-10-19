@@ -45,7 +45,7 @@ public class SingleTypeActivity extends AppCompatActivity {
         gridLayoutManager = new GridLayoutManager(this, 2);
         staggeredGridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(linearLayoutManager);
-        myAdapter = new MyAdapter(datas);
+        myAdapter = new MyAdapter();
         recyclerView.setAdapter(myAdapter);
 
 
@@ -99,11 +99,7 @@ public class SingleTypeActivity extends AppCompatActivity {
 
 
 
-    private class MyAdapter extends BaseRecyclerViewAdapter<TestModel> {
-
-        public MyAdapter(List<TestModel> datas) {
-            super(datas);
-        }
+    private class MyAdapter extends BaseRecyclerViewAdapter {
 
         @Override
         protected void bindData(BaseViewHolder holder, final int position, int viewType) {
@@ -120,6 +116,11 @@ public class SingleTypeActivity extends AppCompatActivity {
         @Override
         protected int getLayoutId(int viewType) {
             return R.layout.item_01;
+        }
+
+        @Override
+        protected int getTotalItemCount() {
+            return datas.size();
         }
 
     }

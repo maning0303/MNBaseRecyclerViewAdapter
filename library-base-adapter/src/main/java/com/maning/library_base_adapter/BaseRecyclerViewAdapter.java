@@ -9,20 +9,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
-import java.util.List;
 
 /**
- * <pre>
- *     author : maning
- *     e-mail : xxx@xx
- *     time   : 2018/04/19
- *     desc   : 抽取RecyclerViewAdapter，简化使用方式，提供添加头部和尾部的方法
- *     version: 1.0
- * </pre>
+ * 抽取RecyclerViewAdapter，简化使用
  */
-public abstract class BaseRecyclerViewAdapter<T> extends RecyclerView.Adapter<BaseRecyclerViewAdapter.BaseViewHolder> {
-    //数据源
-    private List<T> mDatas;
+public abstract class BaseRecyclerViewAdapter extends RecyclerView.Adapter<BaseRecyclerViewAdapter.BaseViewHolder> {
+
     //header footer
     private LinearLayout mHeaderLayout;
     private LinearLayout mFooterLayout;
@@ -30,11 +22,6 @@ public abstract class BaseRecyclerViewAdapter<T> extends RecyclerView.Adapter<Ba
     private static final int TYPE_HEADER = 10000;  //说明是带有Header的
     private static final int TYPE_FOOTER = 20000;  //说明是带有Footer的
     private static final int TYPE_NORMAL = 30000;  //正常的Item
-
-    //构造方法
-    public BaseRecyclerViewAdapter(List<T> mDatas) {
-        this.mDatas = mDatas;
-    }
 
     @Override
     public BaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -61,7 +48,7 @@ public abstract class BaseRecyclerViewAdapter<T> extends RecyclerView.Adapter<Ba
 
     @Override
     public int getItemCount() {
-        return mDatas == null ? getHeaderViewCount() + getFooterViewCount() : mDatas.size() + getHeaderViewCount() + getFooterViewCount();
+        return getTotalItemCount() + getHeaderViewCount() + getFooterViewCount();
     }
 
     @Override
@@ -109,10 +96,6 @@ public abstract class BaseRecyclerViewAdapter<T> extends RecyclerView.Adapter<Ba
                 p.setFullSpan(true);
             }
         }
-    }
-
-    public List<T> getDatas() {
-        return mDatas;
     }
 
     /**
@@ -168,28 +151,12 @@ public abstract class BaseRecyclerViewAdapter<T> extends RecyclerView.Adapter<Ba
      */
     protected abstract int getLayoutId(int viewType);
 
-
     /**
-     * 刷新数据
-     *
-     * @param datas
+     * Item数量
+     * @return
      */
-    public void refreshDatas(List<T> datas) {
-        this.mDatas.clear();
-        this.mDatas.addAll(datas);
-        notifyDataSetChanged();
-    }
+    protected abstract int getTotalItemCount();
 
-
-    /**
-     * 添加数据
-     *
-     * @param datas
-     */
-    public void addDatas(List<T> datas) {
-        this.mDatas.addAll(datas);
-        notifyDataSetChanged();
-    }
 
     /**
      * 获取头部数量

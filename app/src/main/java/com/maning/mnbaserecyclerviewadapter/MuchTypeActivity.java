@@ -36,7 +36,7 @@ public class MuchTypeActivity extends AppCompatActivity {
         for (int i = 0; i < 20; i++) {
             datas.add(new TestModel("描述：" + i));
         }
-        myAdapter = new MyAdapter(datas);
+        myAdapter = new MyAdapter();
         recyclerView.setAdapter(myAdapter);
 
 
@@ -47,11 +47,7 @@ public class MuchTypeActivity extends AppCompatActivity {
         myAdapter.addFooterView(footerView);
     }
 
-    private class MyAdapter extends BaseRecyclerViewAdapter<TestModel> {
-
-        public MyAdapter(List<TestModel> datas) {
-            super(datas);
-        }
+    private class MyAdapter extends BaseRecyclerViewAdapter {
 
         @Override
         protected void bindData(BaseViewHolder holder, final int position, int viewType) {
@@ -85,6 +81,11 @@ public class MuchTypeActivity extends AppCompatActivity {
                 return R.layout.item_02;
             }
             return R.layout.item_01;
+        }
+
+        @Override
+        protected int getTotalItemCount() {
+            return datas.size();
         }
 
     }

@@ -36,11 +36,7 @@
 #### 1.继承BaseRecyclerViewAdapter
 ``` java
 
-    private class MyAdapter extends BaseRecyclerViewAdapter<T> {
-        //构造方法，传入数据源
-        public MyAdapter(List<T> datas) {
-            super(datas);
-        }
+    private class MyAdapter extends BaseRecyclerViewAdapter {
             
         //数据绑定
         @Override
@@ -53,6 +49,12 @@
         @Override
         protected int getLayoutId(int viewType) {
             return R.layout.item_01;
+        }
+        
+        //Item数量
+        @Override
+        protected int getTotalItemCount() {
+            return datas.size();
         }
 
     }
