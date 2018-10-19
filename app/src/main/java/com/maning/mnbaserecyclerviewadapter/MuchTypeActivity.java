@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
@@ -19,6 +20,7 @@ import java.util.List;
 public class MuchTypeActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
+    private Toolbar toolbar;
 
     private List<TestModel> datas = new ArrayList<>();
     private MyAdapter myAdapter;
@@ -27,6 +29,12 @@ public class MuchTypeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_single_type);
+        toolbar = findViewById(R.id.toolbar);
+
+        toolbar.setTitle("多类型例子");
+        //设置toolbar
+        setSupportActionBar(toolbar);
+
 
         recyclerView = findViewById(R.id.recyclerView);
 
